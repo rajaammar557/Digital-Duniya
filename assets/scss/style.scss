@@ -1,0 +1,772 @@
+$main_bg: #ECECEC;
+$main_color: #273db4;
+$sec_color: #fff;
+$hero_bg: linear-gradient(135deg, rgba(125, 136, 255, .66) .07%, rgba(89, 114, 251, 0.85) 50.35%, $main_color 99.31%);
+
+
+
+@mixin width {
+    width: 90%;
+    margin: 0 auto;
+}
+
+@mixin sm-width {
+    width: 48rem;
+    margin: 0 auto;
+}
+
+@mixin md-width {
+    width: 78rem;
+    margin: 0 auto;
+}
+
+@mixin grid {
+    display: grid;
+    grid-template-rows: 1fr;
+}
+
+
+@mixin fonts($size) {
+    letter-spacing: .2rem;
+    font-family: 'Fredoka', sans-serif;
+    font-size: $size;
+    font-weight: bold;
+}
+
+@mixin btn {
+
+    padding: 1rem 3rem;
+    font-size: 2rem;
+    color: $sec_color;
+    background-color: $main_color;
+    border-radius: .5rem;
+    border: .3rem solid $main_color;
+    font-weight: 500;
+}
+
+@mixin hover {
+    cursor: pointer;
+    color: $main_color;
+    background-color: transparent;
+    transition: .3s ease-in-out;
+}
+
+@mixin hover2 {
+    cursor: pointer;
+    color: $sec_color;
+    transition: .3s ease-in-out;
+    background-color: $main_color;
+
+}
+
+@mixin shadow($blur) {
+
+    box-shadow:
+        0 0 $blur rgba(0, 0, 0, 0.3);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Creepster&family=Fredoka:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap');
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+
+}
+
+
+html {
+    font-size: 62.5%;
+    font-family: 'Outfit', sans-serif;
+    scroll-behavior: smooth;
+}
+
+::selection {
+    color: $sec_color !important;
+    background: $main_color !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $main_color;
+    border-radius: 1rem;
+}
+
+::-webkit-scrollbar-track-piece {
+    background-color: $sec_color;
+}
+
+::-webkit-scrollbar {
+    width: 1rem
+}
+
+body {
+    background-color: $main_bg;
+}
+
+.container {
+
+    max-width: 130rem;
+    margin: 0 auto;
+}
+
+@media only screen and (max-width: 1400px) {
+
+
+    .container {
+        @include width;
+    }
+}
+.hero {
+    min-height: 102vh;
+    width: 100%;
+    background: $hero_bg;
+    background-size: cover;
+
+    .wrapper {
+        .nav {
+            @at-root .navbar {
+                @include grid;
+                grid-template-columns: 1fr 1fr;
+                // background-color: red;
+
+                .brand {
+                    margin: 2.5rem 0 0 0;
+                    padding: 0 0 2rem 0;
+                    font-family: 'fredoka';
+
+                    a {
+                        color: $main_color;
+                        font-size: 2rem;
+                        letter-spacing: .2rem;
+                        text-transform: uppercase;
+                        text-decoration: none;
+
+                        strong {
+                            font-size: 2.8rem;
+                            position: relative;
+                            top: 1rem;
+                        }
+                    }
+                }
+
+                .oc {
+                    display: none;
+                }
+
+                @at-root .nav-list {
+                    margin: 3.5rem 0 0 auto;
+
+                    li {
+                        display: inline;
+                        padding: 0 0 0 2rem;
+
+                        .active {
+                            color: $main_color;
+                        }
+
+                        a {
+                            color: black;
+                            text-decoration: none;
+                            font-size: 1.8rem;
+                            font-weight: bold;
+
+                            &:hover {
+                                color: $main_color;
+                                transition: .1s ease-in-out;
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        @at-root .sticky {
+            background: $sec_color;
+            position: fixed;
+            transition: 1s;
+            @include shadow(.7rem);
+            min-width: 100%;
+            z-index: 9;
+            top: 0;
+
+            .brand {
+                margin-top: .7rem;
+            }
+
+            .nav-list {
+                margin: 1.6rem 0 1.6rem auto;
+            }
+        }
+
+        @at-root .hero-content {
+            @include grid;
+            grid-template-columns: 1fr 1fr;
+            // grid-template-areas: 'hero-heaiding hero-img';
+
+            .hero-heading {
+                // grid-area: hero-heading;
+                padding: 14rem 0 0 0;
+
+                h1 {
+                    @include fonts(4.8rem);
+                    margin: 0 0 3.5rem 0;
+                }
+
+                h2 {
+                    @include fonts(3rem);
+
+                    strong {
+                        color: $main_color;
+                        display: inline-block;
+                        margin: 1rem 0 0 0;
+                    }
+                }
+
+                a {
+                    @include btn;
+                    text-decoration: none;
+                    display: inline-block;
+                    color: $main_color;
+                    background-color: transparent;
+                    margin: 3rem 0;
+
+
+                    &:hover {
+                        @include hover2;
+                    }
+                }
+            }
+
+            .hero-img {
+                // grid-area: hero-img;
+                padding: 3rem 0 0 0;
+
+                img {
+                    margin: 0 0 0 2rem;
+                    border-radius: 5rem;
+                    width: 70%;
+                    
+                }
+            }
+        }
+    }
+}
+
+.heading {
+    color: $main_color;
+    margin: 7rem 0 5rem 0;
+    @include fonts(3.2rem);
+    text-align: center;
+
+}
+
+.about {
+    .abouts {
+        @include grid;
+        grid-gap: 1.5rem;
+        grid-template-columns: 5.5fr 6.5fr;
+
+        @at-root .about-us, .about-img {
+            background-color: $sec_color;
+            border-radius: 1.4rem;
+            @include shadow(.7rem);
+        }
+
+        @at-root .about-us {
+            padding: 0 0 0 3.4rem;
+
+            h1 {
+                @include fonts(2.6rem);
+                color: $main_color;
+                margin: 2.5rem 0 1rem 0;
+            }
+
+            h4 {
+                letter-spacing: .1rem;
+                font-size: 1.6rem;
+                margin: 0 3.4rem 0 0;
+            }
+
+            .about-btn {
+                display: inline-block;
+                @include btn;
+                margin: 3rem 0;
+                text-decoration: none;
+
+                &:hover {
+                    @include hover;
+                    font-weight: 500;
+
+                }
+            }
+        }
+
+        @at-root .about-img {
+            display: grid;
+            place-items: center;
+
+            img {
+                width: 90%;
+                height: 90%;
+                border-radius: 1rem;
+            }
+        }
+    }
+}
+
+
+.blogs {
+
+    .feature-post {
+        background-color: $sec_color;
+        margin: 4rem 0;
+        @include grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 'post-content post-img';
+        border-radius: 1.4rem;
+        @include shadow(.7rem);
+        padding: 4.5rem 0;
+
+        @at-root .feature-post-content {
+            grid-area: post-content;
+            padding: 2rem 2.5rem 0 2.5rem;
+
+            .title {
+                @include fonts(3rem);
+            }
+
+            .description {
+                margin: 3rem 0 0 0;
+
+                h2 {
+                    font-size: 1.6rem;
+                    letter-spacing: .1rem;
+
+                }
+            }
+
+            div {
+                margin: 5rem 0 0 0;
+
+                a {
+                    @include btn;
+                    text-decoration: none;
+                    display: inline-block;
+                    color: $main_color;
+                    background-color: transparent;
+
+                    &:hover {
+                        @include hover2;
+                    }
+                }
+
+                .date {
+                    margin: 2rem 4rem 0 0;
+                    font-size: 1.5rem;
+                    float: right;
+                }
+            }
+        }
+
+        @at-root .feature-post-img {
+            grid-area: post-img;
+
+            img {
+                width: 90%;
+                height: 35rem;
+                border-radius: 1rem;
+            }
+        }
+    }
+
+    @at-root .latest-blogs {
+        @include grid;
+        grid-gap: 2.5rem;
+        grid-template-columns: 1fr 1fr 1fr;
+
+        .blog-post {
+            background-color: $sec_color;
+            border-radius: 1.4rem;
+            @include shadow(.7rem);
+            overflow: hidden;
+
+            @at-root .blog-img {
+                // overflow: hidden;
+                text-align: center;
+
+                img {
+                    width: 100%;
+                    height: 25rem;
+                    border-top-right-radius: 1.4rem;
+                    border-top-left-radius: 1.4rem;
+                    object-fit: cover;
+                    overflow: hidden;
+                }
+            }
+
+            &:hover {
+                .blog-img {
+                    overflow: hidden;
+
+                    img {
+                        transform: scale(1.2);
+                        transition: .5s all;
+
+                    }
+                }
+            }
+
+            @at-root .blog-content {
+                padding: 2rem 3rem 0 3rem;
+
+                h1 {
+                    @include fonts(2.4rem);
+                    padding: 0 0 1rem 0;
+                }
+
+                h2 {
+                    letter-spacing: .1rem;
+                }
+
+                div {
+                    margin: 2rem 0 3rem 0;
+
+                    a {
+
+                        padding: .9rem 2.5rem;
+                        font-size: 1.6rem;
+                        color: $sec_color;
+                        background-color: $main_color;
+                        border-radius: .5rem;
+                        border: .3rem solid $main_color;
+                        font-weight: 500;
+                        text-decoration: none;
+                        display: inline-block;
+                        color: $main_color;
+                        background-color: transparent;
+
+                        &:hover {
+                            @include hover2;
+                        }
+                    }
+
+                    .date {
+                        margin: 1rem 2rem 0 0;
+                        font-size: 1.5rem;
+                        float: right;
+                    }
+                }
+            }
+
+        }
+    }
+}
+
+.newsletter {
+    @at-root .content {
+        @include shadow(.7rem);
+        display: grid;
+        border-radius: 1.4rem;
+        background: $hero_bg;
+        padding: 10rem 0;
+
+        justify-content: center;
+        text-align: center;
+
+        h1 {
+            @include fonts(2.8rem);
+            color: $sec_color;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            letter-spacing: .2rem;
+            color: $sec_color;
+            margin: 1rem 0 2rem 0;
+        }
+
+        div {
+            color: red;
+        }
+
+        input,
+        button {
+            display: inline;
+        }
+
+        input {
+            padding: 1.3rem 1rem 1.4rem 1rem;
+            width: 40rem;
+            font-weight: 600;
+            margin: 0 0 0 5rem;
+            border: .3rem solid $main_color;
+            border-radius: .7rem;
+
+            &::placeholder {
+                color: #000;
+                font-size: 1.6;
+                font-weight: 600;
+                letter-spacing: .1rem;
+            }
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        button {
+
+            @include btn;
+            color: $main_bg;
+            background-color: $main_color;
+            position: relative;
+            left: -5rem;
+            top: .15rem;
+
+            &:hover {
+                @include hover2;
+            }
+
+        }
+    }
+}
+
+.contact {
+    background: $sec_color;
+    @include shadow(.07%);
+    margin: 7rem 0 0 0;
+
+    .footer {
+        @include grid();
+        grid-template-columns: 1fr 1fr 1fr;
+        text-align: center;
+
+        div {
+            margin: 0 0 3rem 0;
+
+            h1 {
+                @include fonts(2.4rem);
+                margin: 3rem 0 2rem 0;
+                color: $main_color;
+            }
+
+            h3 {
+                padding: .5rem 0;
+
+                a {
+                    text-decoration: none;
+                    font-size: 1.6rem;
+                    letter-spacing: .1rem;
+                    color: #000;
+                }
+            }
+        }
+    }
+
+    .main-footer {
+        @include grid;
+        grid-template-columns: 1fr 1fr;
+
+        .brand {
+            margin: 1rem 0;
+            font-family: 'fredoka';
+
+            a {
+                color: $main_color;
+                font-size: 2rem;
+                letter-spacing: .2rem;
+                text-transform: uppercase;
+                text-decoration: none;
+
+                strong {
+                    font-size: 2.8rem;
+                    position: relative;
+                    top: 1rem;
+                }
+            }
+        }
+
+        h2 {
+            text-align: right;
+            font-size: 2rem;
+            letter-spacing: .2rem;
+            padding: 2rem 0 0 0;
+
+        }
+    }
+
+}
+
+
+// Design For tablet
+@media only screen and (max-width: 1199px) {
+    .container {
+        width: 80%;
+    }
+
+    .hero {
+
+        .wrapper {
+            .nav {
+                @at-root .navbar {
+                    @include grid;
+                    grid-template-columns: 1fr 1fr;
+
+                    .hide {
+                        display: none;
+                        transition: 1s;
+
+                    }
+
+                    .menu {
+                        display: block;
+                        margin: 0 0 0 auto;
+                        padding: 2rem 0 0 0;
+                        z-index: 344;
+                    }
+
+                    .cross {
+                        display: block;
+                        margin: 0 0 0 auto;
+                        padding: 4rem 0 0 0;
+                        z-index: 344;
+                    }
+
+                    .menu-hide,
+                    cross-hide {
+                        display: none !important;
+                    }
+                    @at-root .nav-list {
+                        padding: 15rem 0 0 0;
+                        position: fixed;
+                        width: 100%;
+                        height: 105vh;
+                        background: $hero_bg;
+                        text-align: center;
+                        opacity: .9;
+                        right: 0;
+                        top: -5rem;
+
+                        li {
+                            display: block;
+                            padding: 3rem 0;
+
+                            a {
+                                font-size: 2.4rem;
+                            }
+                        }
+                    }
+                }
+
+                @at-root .sticky {
+                    .oc {
+                        padding: 1.2rem 0 0 0 !important;
+                    }
+                }
+            }
+        }
+
+        .hero-content {
+            grid-template-columns: 1fr;
+            grid-template-areas: 'hero-img' 'hero-heading';
+
+            .hero-img {
+                grid-area: hero-img;
+
+                img {
+                    display: block;
+                    width: 100%;
+                    margin: 7rem auto 0 auto;
+                }
+            }
+
+            .hero-heading {
+                grid-area: hero-heading;
+                padding: 8rem 0 0 1rem;
+            }
+        }
+    }
+
+    .about {
+        .abouts {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .blogs {
+        .feature-post {
+            grid-template-columns: 1fr;
+            grid-template-areas: 'post-img' 'post-content';
+
+            .feature-post-img {
+                img {
+                    display: block;
+                    margin: 0 auto;
+                }
+            }
+        }
+
+        .latest-blogs {
+            grid-template-columns: 1fr 1fr;
+
+        }
+    }
+}
+
+// design for mobile
+@media only screen and (max-width: 766px) {
+
+    html {
+        font-size: 50%;
+    }
+
+    .container {
+        width: 95%;
+        margin: 0 auto !important;
+    }
+
+    .blogs {
+        .latest-blogs {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .newsletter {
+        @at-root .content {
+            input {
+                width: 50%;
+            }
+        }
+    }
+
+    .contact {
+        .footer {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .main-footer {
+        margin: 0 1rem;
+
+        .brand {
+
+            a {
+                font-size: 1.6rem !important;
+                letter-spacing: .2rem;
+
+                strong {
+                    font-size: 2.4rem !important;
+                }
+            }
+        }
+
+        h2 {
+            font-size: 1.6rem !important;
+
+        }
+    }
+}
